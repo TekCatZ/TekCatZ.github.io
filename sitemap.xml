@@ -2,7 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.tekcatz.com/tags/first/</loc>
+    <loc>https://www.tekcatz.com/categories/abc/</loc>
+    <lastmod>2020-09-15T11:30:03+00:00</lastmod>
+  </url><url>
+    <loc>https://www.tekcatz.com/categories/</loc>
     <lastmod>2020-09-15T11:30:03+00:00</lastmod>
   </url><url>
     <loc>https://www.tekcatz.com/posts/my-first-post/</loc>
@@ -11,12 +14,15 @@
     <loc>https://www.tekcatz.com/posts/</loc>
     <lastmod>2020-09-15T11:30:03+00:00</lastmod>
   </url><url>
+    <loc>https://www.tekcatz.com/tags/second/</loc>
+    <lastmod>2020-09-15T11:30:03+00:00</lastmod>
+  </url><url>
     <loc>https://www.tekcatz.com/tags/</loc>
     <lastmod>2020-09-15T11:30:03+00:00</lastmod>
   </url><url>
     <loc>https://www.tekcatz.com/</loc>
     <lastmod>2020-09-15T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://www.tekcatz.com/categories/</loc>
+    <loc>https://www.tekcatz.com/search/</loc>
   </url>
 </urlset>
