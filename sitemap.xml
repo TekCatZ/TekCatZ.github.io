@@ -2,14 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.tekcatz.com/posts/test_push/</loc>
+    <lastmod>2022-01-16T02:09:27+07:00</lastmod>
+  </url><url>
     <loc>https://www.tekcatz.com/posts/test_fb/</loc>
     <lastmod>2022-01-16T00:16:17+07:00</lastmod>
   </url><url>
     <loc>https://www.tekcatz.com/posts/</loc>
-    <lastmod>2022-01-16T00:16:17+07:00</lastmod>
+    <lastmod>2022-01-16T02:09:27+07:00</lastmod>
   </url><url>
     <loc>https://www.tekcatz.com/</loc>
-    <lastmod>2022-01-16T00:16:17+07:00</lastmod>
+    <lastmod>2022-01-16T02:09:27+07:00</lastmod>
   </url><url>
     <loc>https://www.tekcatz.com/about/</loc>
   </url><url>
