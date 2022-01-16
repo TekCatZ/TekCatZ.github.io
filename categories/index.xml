@@ -9,6 +9,16 @@
       <link>https://www.tekcatz.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://www.tekcatz.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Jan 2022 00:16:17 +0700</lastBuildDate><atom:link href="https://www.tekcatz.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>test</title>
+      <link>https://www.tekcatz.com/categories/test/</link>
+      <pubDate>Sun, 16 Jan 2022 00:16:17 +0700</pubDate>
+      
+      <guid>https://www.tekcatz.com/categories/test/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
