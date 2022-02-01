@@ -102,6 +102,7 @@
 </p>
 <p id="type-email-p" style="margin-top: 20px; margin-bottom: 10px; color: var(--primary)">Nhập email để nhận thông báo khi có bài viết mới</p>
 <div id="email-error-div" style="color: red;"></div>
+<div id="email-succeed-div" style="color: green;"></div>
 <div style="display: flex; width: 100%; color: inherit;">
   <input style="border: 1px solid; border-right: none; border-color: inherit; color: inherit; flex-grow: 1; padding: 6px 10px; border-top-left-radius: 4px; border-bottom-left-radius: 4px;" id="email-subscribe-inp" type="email" placeholder="Nhập email">
   <button style="border: 1px solid darkorange; font-weight: 500; width: 100px; padding: 6px 10px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; background-color: darkorange;" id="email-subscribe-btn">Đăng ký</button>
@@ -110,12 +111,23 @@
 <script>
   document.getElementById('email-subscribe-btn').addEventListener('click', async function(e) {
       document.getElementById('email-error-div').innerHTML = '';
+      document.getElementById('email-succeed-div').innerHTML = '';
       const email = document.getElementById('email-subscribe-inp').value;
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-          const result = await axios.post('https://1u75smgwn4.execute-api.ap-southeast-1.amazonaws.com/subscribe-email', {
-              email,
-          });
-          console.log(result);
+          try {
+              const result = await axios.post('https://1u75smgwn4.execute-api.ap-southeast-1.amazonaws.com/subscribe-email', {
+                  email,
+              });
+              if (result.status === 200) {
+                  document.getElementById('email-succeed-div').appendChild(document.createTextNode('Đăng ký email thành công'));
+              }
+              else {
+                  throw new Error(result.data);
+              }
+          }
+          catch (error) {
+              document.getElementById('email-error-div').appendChild(document.createTextNode(error.message));
+          }
       }
       else {
         document.getElementById('email-error-div').appendChild(document.createTextNode('Email không hợp lệ'));
