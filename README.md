@@ -3,6 +3,7 @@
 1. Install Rbenv (ruby version manager):
     - macOS: `brew install rbenv ruby-build`
     - Linux (Debian, Ubuntu and their derivatives): `sudo apt install rbenv`
+    - Windows: go to https://rubyinstaller.org/downloads/, download version 3.2.2 (x64) with DEVKIT.
 2. Load rbenv to shell: `rbenv init` (follow instructions after run the command)
 3. Install ruby 3.2.2: `rbenv install 3.2.2`
 4. Clone this repo
