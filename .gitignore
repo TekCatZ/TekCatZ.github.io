@@ -3,3 +3,34 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+.bundle/
+
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+*.DS_Store
+
+*.idea
+*.iml
+.vscode
+
+# Other source repository archive directories (protects when importing)
+.hg
+.svn
+CVS
+
+# automatic backup files
+*~.nib
+*.swp
+*~
+*(Autosaved).rtfd/
+Backup[ ]of[ ]*.pages/
+Backup[ ]of[ ]*.key/
+Backup[ ]of[ ]*.numbers/
+
+/web-app/WEB-INF
+build/
+*.[oa]
+*.pyc
+.log
