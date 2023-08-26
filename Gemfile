@@ -6,9 +6,9 @@ gem "jekyll-theme-chirpy", "~> 6.1"
 
 # gem "github-pages", "~> 228", group: :jekyll_plugins
 
-# group :jekyll_plugins do
-#   gem "jekyll-feed", "~> 0.12"
-# end
+group :jekyll_plugins do
+  gem "jekyll-feed", "~> 0.12"
+end
 
 group :test do
   gem "html-proofer", "~> 3.18"
