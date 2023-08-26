@@ -34,3 +34,9 @@ build/
 *.[oa]
 *.pyc
 .log
+
+assets/js/dist
+*.gem
+
+# NPM dependencies
+node_modules
