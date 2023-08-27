@@ -1,5 +1,5 @@
-baseURL: "https://examplesite.com/"
-title: ExampleSite
+baseURL: "https://tekcatz.com/"
+title: TekCatZ
 paginate: 5
 theme: PaperMod
 
@@ -8,7 +8,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-googleAnalytics: UA-123-45
+googleAnalytics: UA-217278225-1
 
 minify:
   disableXML: true
@@ -16,9 +16,9 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: ExampleSite
+  title: TekCatZ
   description: "ExampleSite description"
-  keywords: [Blog, Portfolio, PaperMod]
+  keywords: [Blog, PaperMod]
   author: Me
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
@@ -77,20 +77,12 @@ params:
     Content: Welcome to my blog
 
   socialIcons:
-    - name: twitter
-      url: "https://twitter.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
     - name: github
-      url: "https://github.com/"
+      url: "https://github.com/TekCatZ"
 
   analytics:
     google:
-      SiteVerificationTag: "XYZabc"
-    bing:
-      SiteVerificationTag: "XYZabc"
-    yandex:
-      SiteVerificationTag: "XYZabc"
+      SiteVerificationTag: "G-5NQ9WYKRVB"
 
   cover:
     hidden: true # hide everywhere but not in structured data
