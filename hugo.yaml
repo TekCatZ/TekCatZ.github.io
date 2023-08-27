@@ -25,7 +25,7 @@ params:
   disableThemeToggle: false
 
   ShowReadingTime: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
@@ -39,6 +39,13 @@ params:
   hideSummary: false
   showtoc: true
   tocopen: true
+
+  shareButtons:
+    size: small
+    icon: solid
+    networks:
+      - facebook
+      - twitter
 
   assets:
     # disableHLJS: true # to disable highlight.js
@@ -83,7 +90,7 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/TekCatZ/TekCatZ.github.io/content"
+    URL: "https://github.com/TekCatZ/TekCatZ.github.io/tree/master/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
