@@ -73,12 +73,14 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Hi there \U0001F44B"
-    Content: Welcome to my blog
+    Title: "Hello \U0001F44B"
+    Content: Blog về công nghệ và đủ thể loại khác
 
   socialIcons:
     - name: github
       url: "https://github.com/TekCatZ"
+    - name: kofi
+      url: "https://ko-fi.com/tekcatz"
 
   analytics:
     google:
