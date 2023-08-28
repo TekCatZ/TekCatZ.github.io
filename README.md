@@ -10,6 +10,7 @@
 
 1. Checkout another branch before do anything because master branch is locked
 2. All post goes under folder `content/posts` with markdown format. You can wrap all your related posts under sub folder like this `content/posts/java-series`.
+3. If your name is not listed inside list authors in `hugo.yaml` under `params.authors` section, feel free to add your name or nickname or whatever you want to show as author.
 3. Make sure your post is ready (run and view as expected on local first) before create pull request to master. Everything goes into master will be deployed automatically and visible on UI.
 4. You can refer to PaperMod documentation for more details about the markdown format they use for rich content, math typeset, emoji.
 5. When create a post, you can follow the metadata format inside `template/template.md`.
