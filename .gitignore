@@ -27,3 +27,9 @@ _testmain.go
 
 .vscode
 .idea
+
+.firebaserc
+
+firebase.json
+
+.firebase/
