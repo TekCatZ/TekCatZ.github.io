@@ -33,7 +33,24 @@ Khi chương trình chạy đến những đoạn code cần cấp phát vùng n
 
 Như hình trên, ta thấy rằng dù số ô nhớ free là 4 (những ô không đánh dấu X) nhưng do chúng nằm rời rạc nhau nên chương trình không thể yêu cầu cấp phát vùng nhớ cho object của `Foo` được.
 
-## Vùng nhớ page file
+## Cấp phát vùng nhớ
+
+Như đã đề cập, khi chương trình khởi chạy nó sẽ tạo ra 1 tiến trình và yêu cầu hệ điều hành cấp 1 vùng nhớ ảo cho tiến trình đó. Khi chúng ta khởi tạo 1 object trong chương trình, chúng ta không thực chất tương tác trực tiếp với vùng nhớ ảo này, mà runtime của chương trình sẽ tạo ra 1 "layer" mới trên vùng nhớ ảo này giúp các object khởi tạo vào đó và còn được gọi là vùng nhớ heap (managed heap). Như vậy có thể hiểu rằng vùng nhớ ảo là do tiến trình quản lý còn các managed heap sẽ do runtime của chương trình quản lý giúp tương tác với vùng nhớ ảo. Nếu các bạn sử dụng các native code thì có thể can thiệp vào vùng nhớ ảo trực tiếp luôn.
+
+Về cơ bản chúng ta có 3 layer:
+* Vùng nhớ vật lý (physical memory) do hệ điều hành quản lý.
+* Vùng nhớ ảo (virtual address space) do tiến trình quản lý.
+* Vùng nhớ heap (managed heap) do chương trình quản lý.
+
+![Các layer vùng nhớ](./memory_layers.png)
+
+Vùng nhớ ảo có thể mở rộng đến kích thước tối đa cho phép của 1 tiến trình (2GB cho 32bit và 8TB cho 64bit) và vùng nhớ heap có thể mở rộng tối đa đến kích thước hiện tại của vùng nhớ ảo đang chứa nó.
+
+Để quản lý heap thì chương trình cũng sẽ sử dụng 1 con trỏ (pointer) trỏ vào địa chỉ nơi mà đối tượng tiếp theo được khởi tạo sẽ được đặt vào đó.
+
+![Con trỏ vùng nhớ heap](./heap_ptr.png)
+
+## Giải phóng vùng nhớ
 
 # Tài liệu tham khảo
 
