@@ -1,7 +1,8 @@
 ---
 author: Ming
 title: "Garbage Collection - bạn có thật sự hiểu về nó?"
-tags: ["programming languages"]
+tags: ["programming languages", "garbage_collection"]
+draft: true
 summary: "Khi còn học trên giảng đường, chúng ta thường được dạy rằng những ngôn ngữ như Java, Python, C#,... có tích hợp sẵn Garbage Collection để tự dọn vùng nhớ đã được cấp phát cho các object. Tuy nghe nhiều là thế nhưng liệu các bạn có biết cơ chế hoạt động đằng sau nó chưa?"
 showToc: false
 ---
@@ -37,3 +38,4 @@ Như hình trên, ta thấy rằng dù số ô nhớ free là 4 (những ô khô
 # Tài liệu tham khảo
 
 Trong quá trình viết bài mình có tham khảo một số tài liệu sau:
+ * https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals
