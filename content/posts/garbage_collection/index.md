@@ -52,6 +52,36 @@ Vùng nhớ ảo có thể mở rộng đến kích thước tối đa cho phép
 
 ## Giải phóng vùng nhớ
 
+Garbage collector của các ngôn ngữ sẽ có những cơ chế riêng để quyết định xem khi nào là phù hợp để đi "dọn rác". Về cơ bản, những garbage collector này sẽ duyệt qua các object đang có trong chương trình, bắt đầu từ entry point hay root của chương trình và đi qua các object, các field là object bên trong object,... và từ đó lập ra đồ thị kết nối giữa các object với nhau. Ví dụ, nếu object `Foo` có 1 field bên trong là object `Bar`, khi đó đồ thị sẽ có cạnh nối giữa 2 object với nhau chứng tỏ object `Bar` có đường đi đến thông qua `Foo`. Lúc này chắc các bạn cũng lờ mờ đoán được, những object nào không có đường đi trong đồ thị xuất phát từ root (unreachable objects) thì những object đó không còn được sử dụng nữa và sẵn sàng để thu hồi.
+
+```java
+public static void main() {
+    Foo foo = new Foo();
+    foo.barObj = new Bar();
+}
+```
+
+![Object reachable](./reachable_objects.png)
+
+Cơ chế giải phóng vùng nhớ nếu giải thích cơ bản thì cũng đơn giản hơn các bạn nghĩ nhiều. Nó chỉ đơn giản là copy mớ reachable objects và ghép lại sát với nhau trên vùng nhớ heap, xong rồi set lại vị trí con trỏ của vùng nhớ heap là xong, phần còn lại sẽ là unreachable objects và garbage collectior sẽ call xuống native giải phóng.
+
+![Object before collected](./object_before_collected.png)
+
+Giả sử chúng ta có 3 object A (3 ô nhớ), B (4 ô nhớ), C (3 ô nhớ) như hình, pointer của heap đang trỏ vào ô nhớ phía sau C và object B hiện đang unreachable. Garbage collector sẽ tiến hành copy 3 ô nhớ từ object C sang kế object A và set lại vị trí của pointer:
+
+![Alt text](./object_after_collected.png)
+
+Thông thường quá trình dọn rác sẽ không diễn ra liên tục như real-time mà sẽ có những điều kiện riêng để garbage collector đi dọn rác. Những điều kiện đó như sau:
+
+* Dung lượng của vùng nhớ vật lý của hệ thống đang thấp. Hệ điều hành sẽ quản lý việc kiểm soát vùng nhớ này và nó sẽ ra thông báo khi vùng nhớ có dung lượng thấp.
+* Thông thường runtime sẽ set 1 ngưỡng (threshold) dung lượng cho vùng nhớ heap. Ngưỡng này có thể tăng hoặc giảm tùy theo điều kiện của chương trình lúc đó. Nếu tổng dung lượng từ các object đang có vượt quá ngưỡng này thì garbage collector sẽ tiến hành dọn các unreachable objects. Nếu dọn xong mà vẫn vượt threshold thì sẽ gọi đến runtime để tăng threshold lên (thường xảy ra khi gọi Factory để tạo hàng loạt object hay import một lượng lớn data vào mảng chẳng hạn).
+* Hàm GC được gọi, cái này thì hên xui tùy theo ngôn ngữ. Có ngôn ngữ support gọi trực tiếp garbage collector có ngôn ngữ thì không.
+* Object là large object, tức là những object có kích thước lớn hơn 1 số byte nào đó (mỗi ngôn ngữ sẽ mỗi khác, như C# là [85000 byte](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#:~:text=The%20large%20object%20heap%20contains%20objects%20that%20are%2085%2C000%20bytes%20and%20larger)). Mặc định thì runtime sẽ chia heap thành nhiều generation khác nhau, và 1 trong số những generation đó là dành cho large object. Các object thông thường thì khi unreachable phải đợi đến khi thỏa 1 trong những điều kiện trên thì garbage collector mới dọn; riêng large object thì chỉ cần unreachable là garbage collector sẽ dọn nó luôn.
+
+# Các thuật toán của garbage collector
+
+# Generation của garbage collector
+
 # Tài liệu tham khảo
 
 Trong quá trình viết bài mình có tham khảo một số tài liệu sau:
