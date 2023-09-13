@@ -82,6 +82,21 @@ Thông thường quá trình dọn rác sẽ không diễn ra liên tục như r
 
 # Generation của garbage collector
 
+Thuật toán của garbage collector dựa trên những yếu tố sau nhằm tối ưu việc dọn dẹp:
+
+* Copy một phần nhỏ trong vùng nhớ heap sẽ nhanh hơn so với cả 1 vùng nhớ heap.
+* Các object mới tạo thường có xu hướng sẽ có "thời gian tồn tại" (short-lived lifetime) ngắn hơn so với những object đã xuất hiện từ lâu (long-lived lifetime).
+* Các object mới tạo thường sẽ phụ thuộc vào nhau và có thể được truy cập bởi chương trình trong 1 "khoảng thời gian". Ví dụ như trong hàm `foo()` các bạn khai báo các object bên trong thì những object đó sẽ chỉ được sử dụng bên trong hàm `foo()` đó và hết tác dụng khi hàm kết thúc.
+
+Thông thường thì garbage collector đa số sẽ đi dọn những short-lived objects trong suốt cả chương trình hơn là những long-lived objects. Điều này cũng có nghĩa là số lượng short-lived objects, hay nói dễ hiểu là những object vừa tạo ra xong và xài có một lúc là đã không còn cần thiết nữa, là rất nhiều. Để tối ưu hóa, runtime sẽ chia vùng nhớ heap thành 3 generation chính là 0, 1 và 2 để có thể quản lý các short-lived và long-lived objects cho hiệu quả. Giải thích cơ bản thì các object sẽ được lưu ở generation 0 khi vừa được tạo và nếu như nó "sống sót" sau quá trình dọn rác thì sẽ được đưa lên các generation tiếp theo. Như đã đề cập ở trên:
+> Copy một phần nhỏ trong vùng nhớ heap sẽ nhanh hơn so với cả 1 vùng nhớ heap.
+
+Do đó việc chia vùng nhớ heap thành nhiều phần sẽ giúp tối ưu trong việc copy vùng nhớ hơn vì garbage collector có thể chỉ cần phải thực hiện copy để dọn vùng nhớ ở 1 generation thôi là đủ thay vì phải copy toàn bộ vùng nhớ heap.
+
+* Generation 0: đây là generation "trẻ tuổi" nhất và dùng để chứa các short-lived objects. Một ví dụ đơn giản  dễ hiểu của short-lived object là những biến khai báo tạm như `const auth_token = (new AuthTokenGenerator(auth_context)).token`. Các bạn có thể thấy phần khai báo object `new AuthTokenGenerator` bên trong chỉ được sử dụng 1 lần duy nhất để lấy token và sau khi lấy token xong thì object đó cũng mất reference và trở thành unreachable object. Trên thực tế thì có rất nhiều những đoạn code với các object được khai báo chỉ xài đúng 1 hoặc chỉ vài lần trong 1 phạm vi nhỏ như các hàm xử lý đơn giản và nhanh nên đó cũng là lý do việc dọn rác sẽ thường xuyên diễn ra nhiều nhất ở generation 0.
+
+  Đa số các object khi vừa khởi tạo sẽ nằm ở generation 0. Tuy nhiên, chúng ta vẫn còn đó 1 loại object khác mình đã nói ở trên: large object. Riêng loại này thì cho ra chỗ khác nằm, large object khi được tạo sẽ nằm trong vùng nhớ large object heap, đôi khi người ta gọi nó là generation 3 nhưng thực tế generation 3 này là 1 phần của generation 2. Ví dụ đơn giản nhất cho large object có lẽ là khi đọc từng dòng trong file text vào mảng, mỗi phần tử là 1 dòng. Nếu file có kích thước quá lớn thì lúc này mảng cũng sẽ có kích thước lớn theo và nó sẽ bị chuyển thành large object.
+
 # Tài liệu tham khảo
 
 Trong quá trình viết bài mình có tham khảo một số tài liệu sau:
