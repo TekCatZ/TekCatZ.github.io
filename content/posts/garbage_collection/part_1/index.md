@@ -125,6 +125,8 @@ Hàm `main` trong Java cũng là 1 ví dụ điển hình vì nó sẽ luôn s�
 
 Việc thu hồi một vùng nhớ có nghĩa là thu hồi từ những vùng nhớ thấp hơn đến thu hồi vùng nhớ đó. Ví dụ khi thực hiện thu hồi vùng nhớ generation 1 thì phải thu hồi ở generation 0 trước. Do đó, việc thu hồi ở generation 2 đôi khi còn được gọi là thu hồi toàn bộ vùng nhớ heap vì ta phải thu hồi từ 0 đến 1 rồi mới đến 2.
 
+Lưu ý rằng việc chia 3 generation ở đây chỉ là lý thuyết tổng quát, riêng mỗi ngôn ngữ sẽ có cách thức implement 3 generation này khác nhau. Như Java sẽ chia thành Young, Tenured và Perm. Trong Young sẽ chia thành Eden, Survivor, Spaces, Virtual. Trong Tenured và Perm thì đều sẽ chia thành 1 vùng nhớ buffer và Virtual. Nếu có thời gian mình sẽ đi chi tiết từng GC của một số ngôn ngữ nhưng thường thì mình lười lắm hihi.
+
 Như vậy ở phần đầu này chúng ta đã đi qua về một số kiến thức cơ bản và nâng cao về vùng nhớ cũng như tổng quan quy trình hoạt động của garbage collector. Ở phần sau mình sẽ giới thiệu về cách thức hoạt động bên trong của garbage collector xem thuật toán nó sử dụng là gì để thu dọn vùng nhớ.
 
 # Tài liệu tham khảo
