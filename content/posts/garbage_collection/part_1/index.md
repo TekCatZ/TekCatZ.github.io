@@ -2,7 +2,6 @@
 author: Ming
 title: "Garbage Collection - bạn có thật sự hiểu về nó? Phần 1"
 tags: ["programming languages", "garbage_collection"]
-draft: true
 summary: "Khi còn học trên giảng đường, chúng ta thường được dạy rằng những ngôn ngữ như Java, Python, C#,... có tích hợp sẵn Garbage Collection để tự dọn vùng nhớ đã được cấp phát cho các object. Tuy nghe nhiều là thế nhưng liệu các bạn có biết cơ chế hoạt động đằng sau nó chưa?"
 showToc: false
 ---
