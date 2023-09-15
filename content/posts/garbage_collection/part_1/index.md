@@ -1,6 +1,6 @@
 ---
 author: Ming
-title: "Garbage Collection - bạn có thật sự hiểu về nó?"
+title: "Garbage Collection - bạn có thật sự hiểu về nó? Phần 1"
 tags: ["programming languages", "garbage_collection"]
 draft: true
 summary: "Khi còn học trên giảng đường, chúng ta thường được dạy rằng những ngôn ngữ như Java, Python, C#,... có tích hợp sẵn Garbage Collection để tự dọn vùng nhớ đã được cấp phát cho các object. Tuy nghe nhiều là thế nhưng liệu các bạn có biết cơ chế hoạt động đằng sau nó chưa?"
@@ -78,8 +78,6 @@ Thông thường quá trình dọn rác sẽ không diễn ra liên tục như r
 * Hàm GC được gọi, cái này thì hên xui tùy theo ngôn ngữ. Có ngôn ngữ support gọi trực tiếp garbage collector có ngôn ngữ thì không.
 * Object là large object, tức là những object có kích thước lớn hơn 1 số byte nào đó (mỗi ngôn ngữ sẽ mỗi khác, như C# là [85000 byte](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#:~:text=The%20large%20object%20heap%20contains%20objects%20that%20are%2085%2C000%20bytes%20and%20larger)). Mặc định thì runtime sẽ chia heap thành nhiều generation khác nhau, và 1 trong số những generation đó là dành cho large object. Các object thông thường thì khi unreachable phải đợi đến khi thỏa 1 trong những điều kiện trên thì garbage collector mới dọn; riêng large object thì chỉ cần unreachable là garbage collector sẽ dọn nó luôn.
 
-# Các thuật toán của garbage collector
-
 # Generation của garbage collector
 
 Thuật toán của garbage collector dựa trên những yếu tố sau nhằm tối ưu việc dọn dẹp:
@@ -95,7 +93,42 @@ Do đó việc chia vùng nhớ heap thành nhiều phần sẽ giúp tối ưu 
 
 * Generation 0: đây là generation "trẻ tuổi" nhất và dùng để chứa các short-lived objects. Một ví dụ đơn giản  dễ hiểu của short-lived object là những biến khai báo tạm như `const auth_token = (new AuthTokenGenerator(auth_context)).token`. Các bạn có thể thấy phần khai báo object `new AuthTokenGenerator` bên trong chỉ được sử dụng 1 lần duy nhất để lấy token và sau khi lấy token xong thì object đó cũng mất reference và trở thành unreachable object. Trên thực tế thì có rất nhiều những đoạn code với các object được khai báo chỉ xài đúng 1 hoặc chỉ vài lần trong 1 phạm vi nhỏ như các hàm xử lý đơn giản và nhanh nên đó cũng là lý do việc dọn rác sẽ thường xuyên diễn ra nhiều nhất ở generation 0.
 
-  Đa số các object khi vừa khởi tạo sẽ nằm ở generation 0. Tuy nhiên, chúng ta vẫn còn đó 1 loại object khác mình đã nói ở trên: large object. Riêng loại này thì cho ra chỗ khác nằm, large object khi được tạo sẽ nằm trong vùng nhớ large object heap, đôi khi người ta gọi nó là generation 3 nhưng thực tế generation 3 này là 1 phần của generation 2. Ví dụ đơn giản nhất cho large object có lẽ là khi đọc từng dòng trong file text vào mảng, mỗi phần tử là 1 dòng. Nếu file có kích thước quá lớn thì lúc này mảng cũng sẽ có kích thước lớn theo và nó sẽ bị chuyển thành large object.
+  &nbsp;
+
+  Các object khi vừa khởi tạo sẽ nằm ở generation 0. Tuy nhiên, chúng ta vẫn còn đó 1 loại object khác mình đã nói ở trên: large object. Riêng loại này thì cho ra chỗ khác nằm, large object khi được tạo sẽ nằm trong vùng nhớ large object heap, đôi khi người ta gọi nó là generation 3 nhưng thực tế generation 3 này là 1 phần của generation 2. Ví dụ đơn giản nhất cho large object có lẽ là khi đọc từng dòng trong file text vào mảng, mỗi phần tử là 1 dòng. Nếu file có kích thước quá lớn thì lúc này mảng cũng sẽ có kích thước lớn theo và nó sẽ bị chuyển thành large object.
+
+  &nbsp;
+
+  Đa số các object đều sẽ bị thu hồi ngay khi vẫn còn ở generation 0 và chỉ có một số ít mới "sống sót" và được chuyển lên các generation "già" hơn.
+
+  Nếu chương trình cố gắng tạo thêm object khi vùng nhớ generation 0 đã đầy thì garbage collector sẽ bắt đầu việc dọn dẹp vùng nhớ này để có thêm không gian trống. Ở đây, một lần nữa, copy 1 phần vùng nhớ sẽ nhanh hơn toàn bộ heap nên garbage collector sẽ chỉ kiểm tra và thu hồi vùng nhớ ở generation 0 và thông thường thì mỗi lần dọn generation 0 là đa số object trong đây cũng đi luôn.
+
+* Generation 1: đây có thể coi là generation trung gian giữa 0 và 1. Nếu xem generation 0 như sơ sinh thì generation 2 như là thiếu niên. Các object trong generation này vẫn được xem là short-lived objects. Sau khi garbage collector hoàn tất dọn dẹp generation 0, những object may mắn còn sống sót (như kiểu không nằm trong list layoff ấy) sẽ được copy và chuyển lên generation 1 (promote). Quy tắc hoạt động của các generation này khá đơn giản: những object nào không bị thu hồi vùng nhớ thì sẽ có xu hướng tồn tại lâu hơn trong chương trình, do đó việc đẩy những object này lên 1 generation cao hơn sau mỗi lần dọn vùng nhớ là hợp lý.
+
+  &nbsp;
+
+  Việc dọn vùng nhớ các generation cũng đi theo nguyên lý từ thấp đến cao như sau: khi tạo mới 1 object, nếu generation 0 không đủ chỗ -> dọn generation 0. Nếu dọn generation 0 vẫn không đủ chỗ thì sẽ bắt đầu dọn sang generation 1 và sau đó là dọn generation 2. Khi dọn 1 generation thì những object còn sống sót ở generation đó sẽ được đẩy lên generation tiếp theo.
+
+  ![ready to be collected in gen 0](./ready_to_be_collected_in_gen_0.png)
+
+  ![collect gen 0](./collect_gen_0.png)
+
+  ![promote to gen 1](./promote_to_gen_1.png)
+
+* Generation 2: khi các object được đẩy lên generation 2 thì sẽ được gọi là long-lived objects. Một ví dụ thường gặp cho các long-lived objects là các property, hàm static có trong chương trình. Chúng được tạo ra từ đầu và thường sống sót đến cuối. Khi garbage collector dọn generation 2, những object còn sống sót vẫn tiếp tục ở đây đến khi nào unreachable.
+
+  ```java
+  public static void main() {
+
+  }
+  ```
+  Hàm `main` trong Java cũng là 1 ví dụ điển hình vì nó sẽ luôn sống sót qua các lần thu hồi vùng nhớ cho đến khi chương trình kết thúc.
+
+  &nbsp;
+
+  Việc thu hồi một vùng nhớ có nghĩa là thu hồi từ những vùng nhớ thấp hơn đến thu hồi vùng nhớ đó. Ví dụ khi thực hiện thu hồi vùng nhớ generation 1 thì phải thu hồi ở generation 0 trước. Do đó, việc thu hồi ở generation 2 đôi khi còn được gọi là thu hồi toàn bộ vùng nhớ heap vì ta phải thu hồi từ 0 đến 1 rồi mới đến 2.
+
+Như vậy ở phần đầu này chúng ta đã đi qua về một số kiến thức cơ bản và nâng cao về vùng nhớ cũng như tổng quan quy trình hoạt động của garbage collector. Ở phần sau mình sẽ giới thiệu về cách thức hoạt động bên trong của garbage collector xem thuật toán nó sử dụng là gì để thu dọn vùng nhớ.
 
 # Tài liệu tham khảo
 
