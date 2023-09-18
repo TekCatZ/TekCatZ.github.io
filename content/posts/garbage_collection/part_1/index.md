@@ -4,6 +4,7 @@ title: "Garbage Collection - bạn có thật sự hiểu về nó? Phần 1"
 tags: ["programming languages", "garbage_collection"]
 summary: "Khi còn học trên giảng đường, chúng ta thường được dạy rằng những ngôn ngữ như Java, Python, C#,... có tích hợp sẵn Garbage Collection để tự dọn vùng nhớ đã được cấp phát cho các object. Tuy nghe nhiều là thế nhưng liệu các bạn có biết cơ chế hoạt động đằng sau nó chưa?"
 showToc: true
+date: 2023-09-15
 ---
 
 Khi còn học trên giảng đường, các bạn thường được nghe giảng rằng một trong những điểm khác biệt lớn giữa những ngôn ngữ như Java, Python, JS, C#,... so với C/C++ đó là những ngôn ngữ đó có tích hợp sẵn garbage collector, tức là khi chúng ta khai báo các object thì chúng ta sẽ không cần phải gọi `delete` để dọn vùng nhớ được cấp phát cho các object thủ công như C/C++ nữa mà những garbage collector đó sẽ tự làm những công việc đó tự động thay cho chúng ta. Cơ mà, biết là tự động dọn như thế thì rất tiện nhưng liệu các bạn có thật sự biết nó làm gì bên trong để dọn vùng nhớ cho chúng ta không? Hãy cùng tìm hiểu trong bài viết này nhé.
@@ -129,7 +130,7 @@ Lưu ý rằng việc chia 3 generation ở đây chỉ là lý thuyết tổng 
 
 Như vậy ở phần đầu này chúng ta đã đi qua về một số kiến thức cơ bản và nâng cao về vùng nhớ cũng như tổng quan quy trình hoạt động của garbage collector. Ở phần sau mình sẽ giới thiệu về cách thức hoạt động bên trong của garbage collector xem thuật toán nó sử dụng là gì để thu dọn vùng nhớ.
 
-# Tài liệu tham khảo
+## Tài liệu tham khảo
 
 Trong quá trình viết bài mình có tham khảo một số tài liệu sau:
  * https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals
