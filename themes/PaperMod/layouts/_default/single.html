@@ -50,7 +50,7 @@
     {{- end }}
   </footer>
 
-  {{- if (.Param "comments") }}
+  {{- if and (.Param "comments") (ne (trim .Page.RelPermalink "/") "privacy") (ne (trim .Page.RelPermalink "/") "about") }}
   {{- partial "comments.html" . }}
   {{- end }}
 </article>

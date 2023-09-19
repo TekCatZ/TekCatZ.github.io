@@ -1,3 +1,25 @@
 {{- /* Footer custom content area start */ -}}
 {{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
 {{- /* Footer custom content area end */ -}}
+<div id="disclaimer-banner">
+  <div class="d-content">
+    <span>Website này sử dụng cookies để cải thiện chất lượng dịch vụ và trải nghiệm người dùng. Bằng việc sử dụng và tương tác trên website, bạn đồng ý với <a href="https://tekcatz.com/privacy">Chính sách bảo mật</a> của chúng tôi.</span>
+    <button type="button" id="b-btn"><span>Tôi đã hiểu</span></button>
+  </div>
+</div>
+<script>
+  function hideDisclaimer() {
+    document.getElementById('disclaimer-banner').style.display = 'none';
+  }
+
+  (function() {
+    if (localStorage.getItem('disclaimer-confirm')) {
+      hideDisclaimer();
+    }
+  })();
+
+  document.getElementById("b-btn").addEventListener('click', function() {
+    localStorage.setItem('disclaimer-confirm', 'true');
+    hideDisclaimer();
+  })
+</script>

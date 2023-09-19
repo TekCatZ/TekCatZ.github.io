@@ -1,0 +1,31 @@
+#disclaimer-banner {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  font-size: 16px;
+  border: 1px solid var(--secondary);
+  max-width: calc(var(--main-width) + var(--gap) * 4);
+  background-color: var(--theme);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  margin: auto;
+}
+
+.d-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+}
+
+.d-content button {
+  color: var(--theme);
+  font-size: 13px;
+  line-height: 36px;
+  background: var(--primary);
+  border-radius: calc(36px/2);
+  padding: 0 16px;
+  flex-shrink: 0;
+}
