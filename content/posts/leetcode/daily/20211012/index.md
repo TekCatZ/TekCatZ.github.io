@@ -1,7 +1,7 @@
 ---
 author: ShadowCat
 title: "Cùng giải Leetcode Daily Challenge - Ngày 12.10.2023 - 1095. Find in Mountain Array"
-tags: ["leetcode", "garbage_collection"]
+tags: ["leetcode"]
 summary: "Giải Leetcode 1095. Find in Mountain Array"
 showToc: true
 date: 2023-10-12
