@@ -4,7 +4,7 @@ title: "Cùng giải Leetcode Daily Challenge - Ngày 12.10.2023 - 1095. Find in
 tags: ["leetcode", "garbage_collection"]
 summary: "Giải Leetcode 1095. Find in Mountain Array"
 showToc: true
-date: 2023-09-15
+date: 2023-10-12
 ---
 
 ### Bài toán
