@@ -1,16 +1,16 @@
 ---
 author: ShadowCat
 title: "Cùng giải Leetcode Daily Challenge - Ngày 12.10.2023 - 1095. Find in Mountain Array"
-tags: ["leetcode", "garbage_collection"]
+tags: ["leetcode"]
 summary: "Giải Leetcode 1095. Find in Mountain Array"
 showToc: true
 date: 2023-10-12
 ---
 
-### Bài toán
+## Bài toán
 Link đến bài toán: [1095. Find in Mountain Array](https://leetcode.com/problems/find-in-mountain-array)
 
-### Phân tích
+## Phân tích
 
 Nếu tạm bỏ qua constraint
 > Submissions making more than 100 calls to MountainArray.get will be judged Wrong Answer.
@@ -31,7 +31,7 @@ Ta có thể áp dụng binary search để tìm `peak` với độ phức tạp
 
 Sau khi tìm được `peak`, ta có thể áp dụng binary search để tìm giá trị cần tìm trong mảng con được sắp xếp tăng dần và giảm dần.
 
-### Giải thuật
+## Giải thuật
 
 1. Tìm `peak` bằng `binary search`:
     1. Nếu `mountainArr[mid] < mountainArr[mid + 1]` thì `peak` nằm ở bên phải `mid`.
@@ -40,7 +40,7 @@ Sau khi tìm được `peak`, ta có thể áp dụng binary search để tìm g
 2. Áp dụng `binary search` cho mảng tăng dần trên đoạn `[0, peak]`.
 3. Nếu không tìm thấy ở bước 2, áp dụng `binary search` mảng giảm dần trên đoạn `[peak + 1, mountainArr.length() - 1]`.
 
-### Code
+## Code
 
 ```go
     func findInMountainArray(target int, mountainArr *MountainArray) int {
