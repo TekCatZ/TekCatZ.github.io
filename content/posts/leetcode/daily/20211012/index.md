@@ -34,72 +34,72 @@ Sau khi tìm được `peak`, ta có thể áp dụng binary search để tìm g
 ## Giải thuật
 
 1. Tìm `peak` bằng `binary search`:
-    1. Nếu `mountainArr[mid] < mountainArr[mid + 1]` thì `peak` nằm ở bên phải `mid`.
-    2. Nếu `mountainArr[mid] > mountainArr[mid + 1]` thì `peak` nằm ở bên trái `mid`.
-    3. Lặp lại bước 1 cho đến khi `left == right`.
+     1. Nếu `mountainArr[mid] < mountainArr[mid + 1]` thì `peak` nằm ở bên phải `mid`.
+     2. Nếu `mountainArr[mid] > mountainArr[mid + 1]` thì `peak` nằm ở bên trái `mid`.
+     3. Lặp lại bước 1 cho đến khi `left == right`.
 2. Áp dụng `binary search` cho mảng tăng dần trên đoạn `[0, peak]`.
 3. Nếu không tìm thấy ở bước 2, áp dụng `binary search` mảng giảm dần trên đoạn `[peak + 1, mountainArr.length() - 1]`.
 
 ## Code
 
 ```go
-    func findInMountainArray(target int, mountainArr *MountainArray) int {
-      n := mountainArr.length()
-      peakIndex := findPeak(mountainArr, 0, n-1)
-      peakValue := mountainArr.get(peakIndex)
-      if target == peakValue {
-        return peakIndex
-      }
-      
-      searchLeft := binarySearch(mountainArr, target, 0, peakIndex-1, true)
-      if searchLeft != -1 {
-        return searchLeft
-      }
-      
-      return binarySearch(mountainArr, target, peakIndex+1, n-1, false)
-   }
-   
-   func findPeak(mountainArr *MountainArray, l, r int) int {
-	   for l < r {
-           mid := l + (r-l)/2
-           if mountainArr.get(mid) < mountainArr.get(mid+1) {
-               l = mid + 1
-           } else {
-               r = mid
-		   }
-	   }
+     func findInMountainArray(target int, mountainArr *MountainArray) int {
+        n := mountainArr.length()
+        peakIndex := findPeak(mountainArr, 0, n-1)
+        peakValue := mountainArr.get(peakIndex)
+        if target == peakValue {
+          return peakIndex
+        }
+        
+        searchLeft := binarySearch(mountainArr, target, 0, peakIndex-1, true)
+        if searchLeft != -1 {
+          return searchLeft
+        }
+        
+        return binarySearch(mountainArr, target, peakIndex+1, n-1, false)
+    }
+    
+    func findPeak(mountainArr *MountainArray, l, r int) int {
+        for l < r {
+            mid := l + (r-l)/2
+            if mountainArr.get(mid) < mountainArr.get(mid+1) {
+                l = mid + 1
+            } else {
+                    r = mid
+            }
+        }
 
-	    return l
-   }
+         return l
+    }
 
-   func binarySearch(mountainArr *MountainArray, target, l, r int, asc bool) int {
-       if asc {
-           for l <= r {
-               mid := l + (r-l)/2
-               midValue := mountainArr.get(mid)
-               if midValue == target {
-                   return mid
-               } else if midValue < target {
-                   l = mid + 1
-               } else {
-                   r = mid - 1
-               }
-           }
-       } else {
-           for l <= r {
-               mid := l + (r-l)/2
-               midValue := mountainArr.get(mid)
-               if midValue == target {
-                   return mid
-               } else if midValue < target {
-                   r = mid - 1
-               } else {
-                   l = mid + 1
-               }
-           }
-       }
-   
-       return -1
-   }
+    func binarySearch(mountainArr *MountainArray, target, l, r int, asc bool) int {
+         if asc {
+              for l <= r {
+                    mid := l + (r-l)/2
+                    midValue := mountainArr.get(mid)
+                    if midValue == target {
+                         return mid
+                    } else if midValue < target {
+                         l = mid + 1
+                    } else {
+                         r = mid - 1
+                    }
+              }
+         } else {
+              for l <= r {
+                    mid := l + (r-l)/2
+                    midValue := mountainArr.get(mid)
+                    if midValue == target {
+                         return mid
+                    } else if midValue < target {
+                         r = mid - 1
+                    } else {
+                         l = mid + 1
+                    }
+              }
+         }
+    
+         return -1
+    }
 
 ```
