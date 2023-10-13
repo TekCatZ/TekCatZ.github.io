@@ -1,7 +1,7 @@
 ---
 author: ShadowCat
 title: "Cùng giải Leetcode Daily Challenge - Ngày 12.10.2023 - 1095. Find in Mountain Array"
-tags: ["leetcode"]
+tags: ["leetcode", "algorithm"]
 summary: "Giải Leetcode 1095. Find in Mountain Array"
 showToc: true
 date: 2023-10-12
@@ -39,6 +39,8 @@ Sau khi tìm được `peak`, ta có thể áp dụng binary search để tìm g
      3. Lặp lại bước 1 cho đến khi `left == right`.
 2. Áp dụng `binary search` cho mảng tăng dần trên đoạn `[0, peak]`.
 3. Nếu không tìm thấy ở bước 2, áp dụng `binary search` mảng giảm dần trên đoạn `[peak + 1, mountainArr.length() - 1]`.
+
+Độ phức tạp của giải thuật là `O(log(n))`.
 
 ## Code
 
