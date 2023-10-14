@@ -15,9 +15,9 @@ minify:
 params:
   env: production
   title: TekCatZ
-  description: "ExampleSite description"
+  description: "TekCatZ's Blog"
   keywords: [Blog, PaperMod]
-  author: ["TekCatZ", "Ming"]
+  author: ["TekCatZ", "Ming", "ShadowCat"]
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
