@@ -1,6 +1,6 @@
 ---
 author: ShadowCat
-title: "Cùng giải Leetcode Daily Challenge - Ngày 22.10.2023 - 342. Power of Four"
+title: "Cùng giải Leetcode Daily Challenge - Ngày 23.10.2023 - 342. Power of Four"
 tags: [ "leetcode", "algorithm" ]
 summary: "Giải Leetcode 342. Power of Four"
 showToc: true
