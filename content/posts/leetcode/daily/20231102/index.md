@@ -1,10 +1,10 @@
 ---
 author: ShadowCat
-title: "Cùng giải Leetcode Daily Challenge - Ngày 26.10.2023 - 2265. Count Nodes Equal to Average of Subtree"
+title: "Cùng giải Leetcode Daily Challenge - Ngày 02.11.2023 - 2265. Count Nodes Equal to Average of Subtree"
 tags: [ "leetcode", "algorithm" ]
 summary: "Giải Leetcode 2265. Count Nodes Equal to Average of Subtree"
 showToc: true
-date: 2023-11-01
+date: 2023-11-02
 ---
 
 ## Bài toán

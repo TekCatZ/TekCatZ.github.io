@@ -1,6 +1,6 @@
 ---
 author: ShadowCat
-title: "Cùng giải Leetcode Daily Challenge - Ngày 26.10.2023 - 501. Find Mode in Binary Search Tree"
+title: "Cùng giải Leetcode Daily Challenge - Ngày 01.11.2023 - 501. Find Mode in Binary Search Tree"
 tags: [ "leetcode", "algorithm" ]
 summary: "Giải Leetcode 501. Find Mode in Binary Search Tree"
 showToc: true
