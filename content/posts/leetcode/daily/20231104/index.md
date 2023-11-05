@@ -4,7 +4,7 @@ title: "Cùng giải Leetcode Daily Challenge - Ngày 04.11.2023 - 1503. Last Mo
 tags: [ "leetcode", "algorithm" ]
 summary: "Giải Leetcode 1503. Last Moment Before All Ants Fall Out of a Plank"
 showToc: true
-date: 2023-11-03
+date: 2023-11-04
 ---
 
 ## Bài toán
