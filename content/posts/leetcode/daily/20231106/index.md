@@ -1,6 +1,6 @@
 ---
 author: ShadowCat
-title: "Cùng giải Leetcode Daily Challenge - Ngày 05.11.2023 - 1845. Seat Reservation Manager"
+title: "Cùng giải Leetcode Daily Challenge - Ngày 06.11.2023 - 1845. Seat Reservation Manager"
 tags: [ "leetcode", "algorithm" ]
 summary: "Giải Leetcode 1845. Seat Reservation Manager"
 showToc: true
